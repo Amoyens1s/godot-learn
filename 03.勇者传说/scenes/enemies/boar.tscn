@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqkogf1dsbik1"]
+[gd_scene load_steps=16 format=3 uid="uid://cqkogf1dsbik1"]
 
 [ext_resource type="PackedScene" uid="uid://c5iv3oqb6ised" path="res://scenes/enemies/enemy.tscn" id="1_mmx25"]
 [ext_resource type="Texture2D" uid="uid://ct8fbaotd4qkl" path="res://assets/boar/Idle-Sheet.png" id="2_3pdx0"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://bv2ymgwdd0w10" path="res://assets/boar/Hit-Sheet.png" id="3_gknhy"]
 [ext_resource type="Texture2D" uid="uid://d2sm1i4wxegsm" path="res://assets/boar/Walk-Base-Sheet.png" id="4_rvpxh"]
 [ext_resource type="Texture2D" uid="uid://b42tsab0uguwf" path="res://assets/boar/Run-Sheet.png" id="5_5yffh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jnvh3"]
+size = Vector2(22, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8qa7"]
+size = Vector2(37, 7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5yffh"]
 radius = 11.0
@@ -306,6 +312,22 @@ collision_mask = 3
 [node name="FloorChecker" type="RayCast2D" parent="Graphics" index="3"]
 position = Vector2(-15, 16)
 target_position = Vector2(0, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/Hitbox" index="0"]
+position = Vector2(-2, 4.5)
+shape = SubResource("RectangleShape2D_jnvh3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Graphics/Hitbox" index="1"]
+position = Vector2(-1.5, 6.5)
+shape = SubResource("RectangleShape2D_x8qa7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/Hurtbox" index="0"]
+position = Vector2(-2, 4.5)
+shape = SubResource("RectangleShape2D_jnvh3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Graphics/Hurtbox" index="1"]
+position = Vector2(-1.5, 6.5)
+shape = SubResource("RectangleShape2D_x8qa7")
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-1, 5)
