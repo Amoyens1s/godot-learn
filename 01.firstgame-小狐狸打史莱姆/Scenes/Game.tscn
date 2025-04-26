@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=3 uid="uid://kf0aimvyvxic"]
+
+[ext_resource type="Texture2D" uid="uid://dfn6nw043l45q" path="res://AssetBundle/Sprites/ForestBackground.png" id="1_iukft"]
+[ext_resource type="Script" uid="uid://bivtejo7odp4w" path="res://Scripts/GameManager.gd" id="1_kldst"]
+[ext_resource type="PackedScene" uid="uid://d2o1vcw4uuoyi" path="res://Scenes/player.tscn" id="2_gl6un"]
+[ext_resource type="PackedScene" uid="uid://dp62kflxhnr4w" path="res://Scenes/slime.tscn" id="3_j5yw3"]
+[ext_resource type="FontFile" uid="uid://cywbclcth8nib" path="res://AssetBundle/Uranus_Pixel_11Px.ttf" id="5_b2bpf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gl6un"]
+distance = 8.0
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("spawn_timer", "score_label", "game_over_label")]
+y_sort_enabled = true
+script = ExtResource("1_kldst")
+slime_scene = ExtResource("3_j5yw3")
+spawn_timer = NodePath("Timer")
+score_label = NodePath("CanvasLayer/Score")
+game_over_label = NodePath("CanvasLayer/GameOver")
+
+[node name="Background 1" type="Sprite2D" parent="."]
+position = Vector2(-120, 0)
+texture = ExtResource("1_iukft")
+metadata/_edit_lock_ = true
+
+[node name="Background 2" type="Sprite2D" parent="."]
+position = Vector2(120, 0)
+texture = ExtResource("1_iukft")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.43, 2.43)
+
+[node name="Player" parent="." instance=ExtResource("2_gl6un")]
+position = Vector2(-171, 80)
+
+[node name="Area2D" parent="." instance=ExtResource("3_j5yw3")]
+position = Vector2(177, 75)
+
+[node name="Boundary" type="Node2D" parent="."]
+
+[node name="UpWall" type="StaticBody2D" parent="Boundary"]
+
+[node name="UpWall" type="CollisionShape2D" parent="Boundary/UpWall"]
+position = Vector2(0, 20)
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="DownWall" type="StaticBody2D" parent="Boundary"]
+
+[node name="DownWall" type="CollisionShape2D" parent="Boundary/DownWall"]
+position = Vector2(0, 142)
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="LeftWall" type="StaticBody2D" parent="Boundary"]
+
+[node name="LeftWall" type="CollisionShape2D" parent="Boundary/LeftWall"]
+position = Vector2(-242, 65)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="RightWall" type="StaticBody2D" parent="Boundary"]
+
+[node name="RightWall" type="CollisionShape2D" parent="Boundary/RightWall"]
+position = Vector2(243, 64)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+offset_left = 30.0
+offset_top = 25.0
+offset_right = 91.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("5_b2bpf")
+theme_override_font_sizes/font_size = 48
+text = "Score: 0"
+
+[node name="GameOver" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.267366, 0.565343, 0.388819, 1)
+theme_override_constants/outline_size = 60
+theme_override_fonts/font = ExtResource("5_b2bpf")
+theme_override_font_sizes/font_size = 120
+text = "GAME OVER!"
+
+[node name="Sign" type="Label" parent="CanvasLayer/GameOver"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -317.0
+offset_top = 7.0
+offset_right = 317.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.267366, 0.565343, 0.388819, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_b2bpf")
+theme_override_font_sizes/font_size = 48
+text = "Game By Tigar"
+horizontal_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_spawn_slime"]
