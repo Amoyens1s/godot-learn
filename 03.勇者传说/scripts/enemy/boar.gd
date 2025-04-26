@@ -12,6 +12,13 @@ enum State {
 @onready var calm_down_timer: Timer = $CalmDownTimer
 
 
+func can_see_player() -> bool:
+	if not player_checker.is_colliding():
+		return false
+
+	return player_checker.get_collider() is Player
+
+
 func tick_physics(state: State, delta: float) -> void:
 	match state:
 		State.IDLE:
@@ -30,7 +37,7 @@ func tick_physics(state: State, delta: float) -> void:
 
 
 func get_next_state(state: State) -> State:
-	if player_checker.is_colliding():
+	if can_see_player():
 		return State.RUN
 
 	match state:
