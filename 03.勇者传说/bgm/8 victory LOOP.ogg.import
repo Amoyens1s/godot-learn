@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://30a5i5vs5hd8"
+path="res://.godot/imported/8 victory LOOP.ogg-9ad81f7179766c8a8073c5c500aef492.oggvorbisstr"
+
+[deps]
+
+source_file="res://bgm/8 victory LOOP.ogg"
+dest_files=["res://.godot/imported/8 victory LOOP.ogg-9ad81f7179766c8a8073c5c500aef492.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

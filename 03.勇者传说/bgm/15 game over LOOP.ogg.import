@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://fs8guanoqp5b"
+path="res://.godot/imported/15 game over LOOP.ogg-8f6d0f29169f00ce4ee17b9f4b388897.oggvorbisstr"
+
+[deps]
+
+source_file="res://bgm/15 game over LOOP.ogg"
+dest_files=["res://.godot/imported/15 game over LOOP.ogg-8f6d0f29169f00ce4ee17b9f4b388897.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
