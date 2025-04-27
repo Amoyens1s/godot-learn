@@ -26,6 +26,10 @@ enum Direction {
 var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as float
 
 
+func _ready() -> void:
+	add_to_group("enemies")
+
+
 func move(speed: float, delta: float) -> void:
 	velocity.x = move_toward(velocity.x, speed * direction, accleleration * delta)
 	velocity.y += default_gravity * delta
