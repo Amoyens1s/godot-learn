@@ -27,10 +27,16 @@ func change_scene(path: String, params := {}) -> void:
 	var old_name := tree.current_scene.scene_file_path.get_file().get_basename()
 	world_stats[old_name] = tree.current_scene.to_dict()
 
+	#if "init" in params:
+		#params.init.call()
+
+	# change_scene_to_file会先摘除旧场景，但是不会立即释放，等到这一帧末尾再统一销毁，所以call init需要在这个前面执行，否则访问不到场景树
+	tree.change_scene_to_file(path)
+
+	# 如果非要放到这里，可以修改panel中，查看 @tree_exited 的注释
 	if "init" in params:
 		params.init.call()
 
-	tree.change_scene_to_file(path)
 	await tree.tree_changed
 
 	var new_name := tree.current_scene.scene_file_path.get_file().get_basename()
@@ -96,7 +102,7 @@ func load_game() -> void:
 			data.player.position.y
 
 		),
-		init = func ():
+		init = func():
 			world_stats = data.world_stats
 			player_stats.from_dict(data.data.stats)
 	})
