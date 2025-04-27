@@ -56,7 +56,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -68,7 +68,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -80,7 +80,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jw6e5"]
@@ -99,7 +99,7 @@ grow_vertical = 2
 script = ExtResource("1_61w2s")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -130,9 +130,7 @@ theme_override_colors/font_color = Color(0.78142, 0.297752, 0.305343, 1)
 theme_override_colors/font_shadow_color = Color(0.47, 0.094, 0.106533, 1)
 text = "菜，怎么野猪都打不过"
 horizontal_alignment = 1
-visible_characters = 0
 visible_characters_behavior = 1
-visible_ratio = 0.0
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -142,9 +140,7 @@ theme_override_colors/font_shadow_color = Color(0.52, 0.1092, 0.122893, 1)
 theme_override_font_sizes/font_size = 12
 text = "按任意键重新开始"
 horizontal_alignment = 1
-visible_characters = 0
 visible_characters_behavior = 1
-visible_ratio = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://brmw3mq52v2gf"]
 
-[ext_resource type="Script" uid="uid://ca74sk7n1srmm" path="res://maps/world.gd" id="1_l78uw"]
+[ext_resource type="Script" uid="uid://cd658d0ycpbsg" path="res://scripts/cave.gd" id="1_0qq4n"]
 [ext_resource type="PackedScene" uid="uid://dwgw8lt6kuhrq" path="res://scenes/mine_gate.tscn" id="3_45eu1"]
 [ext_resource type="Script" uid="uid://bandm5wlvj3y6" path="res://scripts/classes/EntryPoint.gd" id="4_l78uw"]
 [ext_resource type="TileSet" uid="uid://c38h67ltw2rv7" path="res://tiles/tile.tres" id="4_ye82m"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cqkogf1dsbik1" path="res://scenes/enemies/boar.tscn" id="8_owvnq"]
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_l78uw")
+script = ExtResource("1_0qq4n")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(360, -184)
@@ -63,3 +63,5 @@ position = Vector2(952, 272)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.427493, 0.427493, 0.427493, 1)
+
+[connection signal="died" from="Boar" to="." method="_on_boar_died"]

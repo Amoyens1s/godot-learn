@@ -6,6 +6,8 @@ enum Direction {
 	RIGHT = +1,
 }
 
+signal died
+
 @onready var graphics: Node2D = $Graphics
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: StateMachine = $StateMachine
@@ -38,4 +40,5 @@ func move(speed: float, delta: float) -> void:
 
 
 func die() -> void:
+	died.emit()
 	queue_free()
