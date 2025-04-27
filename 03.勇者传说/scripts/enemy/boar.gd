@@ -37,7 +37,7 @@ func tick_physics(state: State, delta: float) -> void:
 				direction *= -1
 
 			move(max_speed, delta)
-			if player_checker.is_colliding():
+			if can_see_player():
 				calm_down_timer.start()
 
 
@@ -57,6 +57,9 @@ func get_next_state(state: State) -> int:
 				return State.WALK
 
 		State.WALK:
+			if can_see_player():
+				return State.RUN
+
 			if wall_checker.is_colliding() or not floor_checker.is_colliding():
 				return State.IDLE
 
