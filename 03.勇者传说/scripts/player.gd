@@ -28,6 +28,7 @@ const WALL_JUMP_VELOCITY := Vector2(350, -350)
 const KNOCKBACK_AMOUNT := 512.0
 const SLIDING_DURATION := 0.3
 const SLIDING_SPEED := 256.0
+const LANDING_HEIGHT := 100.0
 
 @export var can_combo := false
 
@@ -35,6 +36,7 @@ var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as floa
 var is_first_tick := false
 var is_combo_requested = false
 var pending_damage: Damage
+var fall_from_y: float
 
 @onready var graphics: Node2D = $Graphics
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -200,15 +202,14 @@ func get_next_state(state: State) -> int:
 
 		State.FALL:
 			if is_on_floor():
-				return State.LANDING if is_still else State.RUNNING
+				var height := global_position.y - fall_from_y
+
+				return State.LANDING if height >= LANDING_HEIGHT else State.RUNNING
 
 			if can_wall_slide():
 				return State.WALL_SLIDING
 
 		State.LANDING:
-			if not is_still:
-				return State.RUNNING
-
 			if not animation_player.is_playing():
 				return State.IDLE
 
@@ -281,6 +282,8 @@ func transition_state(from: State, to: State) -> void:
 			animation_player.play("fall")
 			if from in GROUND_STATE:
 				coyote_timer.start()
+
+			fall_from_y = global_position.y
 
 		State.LANDING:
 			animation_player.play("landing")
