@@ -1,4 +1,5 @@
 extends Node2D
+class_name World
 
 @onready var camera_2d: Camera2D = $Player/Camera2D
 @onready var tile_map: TileMap = $TileMap
@@ -42,3 +43,8 @@ func from_dict(dict: Dictionary) -> void:
 
 		if path not in dict.enemies_alive:
 			node.queue_free()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		Game.back_to_title()

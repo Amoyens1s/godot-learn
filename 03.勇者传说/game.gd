@@ -9,6 +9,7 @@ var world_stats := {}
 
 @onready var player_stats: Stats = $PlayerStats
 @onready var color_rect: ColorRect = $ColorRect
+@onready var default_player_stats := player_stats.to_dict()
 
 
 func _ready() -> void:
@@ -24,8 +25,9 @@ func change_scene(path: String, params := {}) -> void:
 	tween.tween_property(color_rect, "color:a", 1, 0.2)
 	await tween.finished
 
-	var old_name := tree.current_scene.scene_file_path.get_file().get_basename()
-	world_stats[old_name] = tree.current_scene.to_dict()
+	if tree.current_scene is World:
+		var old_name := tree.current_scene.scene_file_path.get_file().get_basename()
+		world_stats[old_name] = tree.current_scene.to_dict()
 
 	#if "init" in params:
 		#params.init.call()
@@ -39,19 +41,20 @@ func change_scene(path: String, params := {}) -> void:
 
 	await tree.tree_changed
 
-	var new_name := tree.current_scene.scene_file_path.get_file().get_basename()
+	if tree.current_scene is World:
+		var new_name := tree.current_scene.scene_file_path.get_file().get_basename()
 
-	if new_name in world_stats:
-		tree.current_scene.from_dict(world_stats[new_name])
+		if new_name in world_stats:
+			tree.current_scene.from_dict(world_stats[new_name])
 
-	if "entry_point" in params:
-		for node in tree.get_nodes_in_group("entry_points"):
-			if node.name == params.entry_point:
-				tree.current_scene.update_player(node.global_position, node.direction)
-				break
+		if "entry_point" in params:
+			for node in tree.get_nodes_in_group("entry_points"):
+				if node.name == params.entry_point:
+					tree.current_scene.update_player(node.global_position, node.direction)
+					break
 
-	if "position" in params and "direction" in params:
-		tree.current_scene.update_player(params.position, params.direction)
+		if "position" in params and "direction" in params:
+			tree.current_scene.update_player(params.position, params.direction)
 
 	tree.paused = false
 
@@ -104,5 +107,22 @@ func load_game() -> void:
 		),
 		init = func():
 			world_stats = data.world_stats
-			player_stats.from_dict(data.data.stats)
+			player_stats.from_dict(data.stats)
 	})
+
+
+func new_game() -> void:
+
+	change_scene("res://maps/forest.tscn", {
+		init = func():
+			world_stats = {}
+			player_stats.from_dict(default_player_stats)
+	})
+
+
+func back_to_title() -> void:
+	change_scene("res://scenes/title_screen.tscn")
+
+
+func has_save() -> bool:
+	return FileAccess.file_exists(SAVE_PATH)

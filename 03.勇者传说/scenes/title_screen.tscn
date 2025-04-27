@@ -372,3 +372,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_tklts")
 }
 autoplay = "enter"
+
+[connection signal="pressed" from="V/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="V/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="V/ExitGame" to="." method="_on_exit_game_pressed"]
