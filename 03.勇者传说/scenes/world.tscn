@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://mudfkkxh6kg3"]
+[gd_scene load_steps=11 format=3 uid="uid://mudfkkxh6kg3"]
 
 [ext_resource type="Script" uid="uid://ca74sk7n1srmm" path="res://scripts/world.gd" id="1_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://dvr5301j26b5j" path="res://assets/Tree-Assets.png" id="1_nnsk1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ukjcafdfvlxj" path="res://assets/Background.png" id="4_k0juu"]
 [ext_resource type="Texture2D" uid="uid://dpe6dsov44u5o" path="res://assets/Background-trees.png" id="5_71j4m"]
 [ext_resource type="PackedScene" uid="uid://cqkogf1dsbik1" path="res://scenes/enemies/boar.tscn" id="6_qfnet"]
+[ext_resource type="Script" uid="uid://c20vvy365x2mn" path="res://scripts/classes/interactable.gd" id="7_i7141"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rwgxs"]
 texture = ExtResource("1_nnsk1")
@@ -393,6 +394,9 @@ terrain_set_0/terrain_1/name = "Leaves"
 terrain_set_0/terrain_1/color = Color(9.3855e-07, 0.524392, 0.357615, 1)
 sources/0 = SubResource("TileSetAtlasSource_rwgxs")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mrxx"]
+size = Vector2(12, 12)
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_4wyf3")
 metadata/_edit_horizontal_guides_ = [192.0]
@@ -688,3 +692,12 @@ region_rect = Rect2(210, 101, 124, 86)
 
 [node name="Boar" parent="." instance=ExtResource("6_qfnet")]
 position = Vector2(267, 95)
+
+[node name="Interactable" type="Area2D" parent="."]
+position = Vector2(120, 166)
+script = ExtResource("7_i7141")
+metadata/_custom_type_script = "uid://c20vvy365x2mn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_4mrxx")
