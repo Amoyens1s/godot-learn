@@ -61,6 +61,8 @@ func change_scene(path: String, params := {}) -> void:
 	tree.paused = false
 
 	tween = create_tween()
+	# 如果没有这个，黑屏没有消失情况下按新的故事会闪烁，旧的新的都能显示
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(color_rect, "color:a", 0, duration)
 
 
