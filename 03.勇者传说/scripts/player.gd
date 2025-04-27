@@ -63,7 +63,7 @@ var interacting_with: Array[Interactable]
 @onready var foot_checker: RayCast2D = $Graphics/FootChecker
 
 @onready var state_machine: StateMachine = $StateMachine
-@onready var stats: Stats = $Stats
+@onready var stats: Stats = Game.player_stats
 @onready var invincible_timer: Timer = $InvincibleTimer
 @onready var interaction_icon: AnimatedSprite2D = $InteractionIcon
 

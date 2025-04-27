@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://biodm7i0lwapv"]
+[gd_scene load_steps=35 format=3 uid="uid://biodm7i0lwapv"]
 
 [ext_resource type="Texture2D" uid="uid://b1as83ashm1p8" path="res://assets/char_blue_1.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bni06mlbkw2lp" path="res://scripts/player.gd" id="1_g2els"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://dobr07871r5ga" path="res://scripts/classes/StateMachine.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://ccvjbgb54hdie" path="res://scripts/classes/Hurtbox.gd" id="3_qlg0r"]
 [ext_resource type="Script" uid="uid://cxkr4qllh7n8j" path="res://scripts/classes/Hitbox.gd" id="4_tuyoq"]
-[ext_resource type="Script" uid="uid://cya0doqu1ld07" path="res://scripts/classes/stats.gd" id="7_fjrip"]
 [ext_resource type="PackedScene" uid="uid://cl8x1vwgqha21" path="res://scenes/status_panel.tscn" id="8_smehm"]
 [ext_resource type="Texture2D" uid="uid://belrpmri2jfno" path="res://assets/gdb-keyboard-2.png" id="9_ur7pv"]
 
@@ -2411,18 +2410,13 @@ one_shot = true
 script = ExtResource("3_qhqgy")
 metadata/_custom_type_script = "uid://dobr07871r5ga"
 
-[node name="Stats" type="Node" parent="."]
-script = ExtResource("7_fjrip")
-metadata/_custom_type_script = "uid://cya0doqu1ld07"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="StatusPanel" parent="CanvasLayer" node_paths=PackedStringArray("stats") instance=ExtResource("8_smehm")]
+[node name="StatusPanel" parent="CanvasLayer" instance=ExtResource("8_smehm")]
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 94.0
 offset_bottom = 32.0
-stats = NodePath("../../Stats")
 
 [node name="InteractionIcon" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -40)
