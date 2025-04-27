@@ -15,9 +15,6 @@ var tween: Tween
 
 
 func _ready() -> void:
-	
-	print("111")
-
 	show_line(0)
 
 
