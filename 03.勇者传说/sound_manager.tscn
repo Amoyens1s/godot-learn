@@ -14,14 +14,19 @@ script = ExtResource("1_22ksp")
 
 [node name="Attack" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("1_mdjn0")
+bus = &"SFX"
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("2_22ksp")
+bus = &"SFX"
 
 [node name="UIPress" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("4_h8btt")
+bus = &"SFX"
 
 [node name="UIFocus" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("5_7jwsb")
+bus = &"SFX"
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"BGM"
