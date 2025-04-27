@@ -21,6 +21,7 @@ func _ready() -> void:
 	tree_exited.connect(func():
 		stats.health_changed.disconnect(update_health)
 		stats.energy_changed.disconnect(update_energy)
+
 	)
 
 
