@@ -2411,6 +2411,7 @@ script = ExtResource("3_qhqgy")
 metadata/_custom_type_script = "uid://dobr07871r5ga"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 20
 
 [node name="StatusPanel" parent="CanvasLayer" instance=ExtResource("8_smehm")]
 offset_left = 6.0

@@ -193,6 +193,7 @@ enabled = false
 color = Color(0, 0.443137, 1, 1)
 energy = 1.2
 texture = SubResource("GradientTexture2D_xh6qk")
+texture_scale = 4.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 callback_mode_process = 0
