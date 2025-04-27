@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://brmw3mq52v2gf"]
+[gd_scene load_steps=8 format=3 uid="uid://brmw3mq52v2gf"]
 
 [ext_resource type="Script" uid="uid://ca74sk7n1srmm" path="res://maps/world.gd" id="1_l78uw"]
 [ext_resource type="PackedScene" uid="uid://dwgw8lt6kuhrq" path="res://scenes/mine_gate.tscn" id="3_45eu1"]
 [ext_resource type="Script" uid="uid://bandm5wlvj3y6" path="res://scripts/classes/EntryPoint.gd" id="4_l78uw"]
 [ext_resource type="TileSet" uid="uid://c38h67ltw2rv7" path="res://tiles/tile.tres" id="4_ye82m"]
+[ext_resource type="PackedScene" uid="uid://pmxsg0wv2b7r" path="res://scenes/save_stone.tscn" id="5_0qq4n"]
 [ext_resource type="PackedScene" uid="uid://biodm7i0lwapv" path="res://scenes/player.tscn" id="5_fpr8h"]
 [ext_resource type="PackedScene" uid="uid://cqkogf1dsbik1" path="res://scenes/enemies/boar.tscn" id="8_owvnq"]
 
@@ -27,6 +28,9 @@ entry_point = "ForestEntryPoint"
 position = Vector2(-256, 480)
 script = ExtResource("4_l78uw")
 metadata/_custom_type_script = "uid://bandm5wlvj3y6"
+
+[node name="SaveStone" parent="TileMap" instance=ExtResource("5_0qq4n")]
+position = Vector2(-176, 392)
 
 [node name="Player" parent="." instance=ExtResource("5_fpr8h")]
 position = Vector2(104, 296)
@@ -56,3 +60,6 @@ layer_0/tile_data = PackedInt32Array(0, 458754, 11, 65536, 458754, 11, 131072, 5
 
 [node name="Boar" parent="." instance=ExtResource("8_owvnq")]
 position = Vector2(952, 272)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.427493, 0.427493, 0.427493, 1)
