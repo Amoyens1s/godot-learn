@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs5t1gx23ok11"]
+
+[ext_resource type="Script" uid="uid://syywfrt2d3le" path="res://scripts/game_over_screen.gd" id="1_61w2s"]
+[ext_resource type="Theme" uid="uid://cgm3ykdiefdqj" path="res://MainTheme.tres" id="1_iwahs"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_61w2s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.894118)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_iwahs")
+theme_override_colors/font_color = Color(0.78142, 0.297752, 0.305343, 1)
+theme_override_colors/font_shadow_color = Color(0.47, 0.094, 0.106533, 1)
+text = "菜，怎么野猪都打不过"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_iwahs")
+theme_override_colors/font_color = Color(0.8, 0.472, 0.477467, 1)
+theme_override_colors/font_shadow_color = Color(0.52, 0.1092, 0.122893, 1)
+theme_override_font_sizes/font_size = 12
+text = "按任意键重新开始"
+horizontal_alignment = 1

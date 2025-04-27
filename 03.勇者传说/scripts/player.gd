@@ -66,6 +66,7 @@ var interacting_with: Array[Interactable]
 @onready var stats: Stats = Game.player_stats
 @onready var invincible_timer: Timer = $InvincibleTimer
 @onready var interaction_icon: AnimatedSprite2D = $InteractionIcon
+@onready var game_over_screen: Control = $CanvasLayer/GameOverScreen
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -386,4 +387,4 @@ func _on_hurtbox_hurt(hitbox: Hitbox) -> void:
 
 
 func die() -> void:
-	get_tree().reload_current_scene()
+	game_over_screen.show_game_over()
