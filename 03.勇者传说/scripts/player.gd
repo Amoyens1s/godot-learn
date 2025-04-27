@@ -13,7 +13,10 @@ enum State {
 	ATTACK_2,
 	ATTACK_3,
 	HURT,
-	DYING
+	DYING,
+	SLIDING_START,
+	SLIDING_LOOP,
+	SLIDING_END
 }
 
 const GROUND_STATE := [State.IDLE, State.RUNNING, State.LANDING, State.ATTACK_1, State.ATTACK_2, State.ATTACK_3]
@@ -23,6 +26,8 @@ const AIR_ACCELERATION := RUN_SPEED / 0.1
 const JUMP_VELOCITY := -350.0
 const WALL_JUMP_VELOCITY := Vector2(350, -350)
 const KNOCKBACK_AMOUNT := 512.0
+const SLIDING_DURATION := 0.3
+const SLIDING_SPEED := 256.0
 
 @export var can_combo := false
 
@@ -35,6 +40,7 @@ var pending_damage: Damage
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var jump_request_timer: Timer = $JumpRequestTimer
+@onready var slide_request_timer: Timer = $SlideRequestTimer
 
 @onready var hand_checker: RayCast2D = $Graphics/HandChecker
 @onready var foot_checker: RayCast2D = $Graphics/FootChecker
@@ -55,6 +61,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("attack") and can_combo:
 		is_combo_requested = true
+
+	if event.is_action_pressed("slide"):
+		slide_request_timer.start()
 
 
 func tick_physics(state: State, delta: float) -> void:
@@ -96,6 +105,12 @@ func tick_physics(state: State, delta: float) -> void:
 		State.HURT, State.DYING:
 			stand(default_gravity, delta)
 
+		State.SLIDING_END:
+			stand(default_gravity, delta)
+
+		State.SLIDING_START, State.SLIDING_LOOP:
+			slide(delta)
+
 	is_first_tick = false
 
 
@@ -118,6 +133,24 @@ func stand(gravity: float, delta: float) -> void:
 	velocity.y += gravity * delta
 
 	move_and_slide()
+
+
+func slide(delta: float) -> void:
+	velocity.x = graphics.scale.x * SLIDING_SPEED
+	velocity.y += default_gravity * delta
+
+	move_and_slide()
+
+
+func can_wall_slide() -> bool:
+	return is_on_wall() and hand_checker.is_colliding() and foot_checker.is_colliding()
+
+
+func should_slide() -> bool:
+	if slide_request_timer.is_stopped():
+		return false
+
+	return not foot_checker.is_colliding()
 
 
 func get_next_state(state: State) -> int:
@@ -144,18 +177,22 @@ func get_next_state(state: State) -> int:
 			if Input.is_action_just_pressed("attack"):
 				return State.ATTACK_1
 
+			if should_slide():
+				return State.SLIDING_START
+
 			if not is_still:
 				return State.RUNNING
 
 		State.RUNNING:
-			if is_still:
-				return State.IDLE
 
 			if Input.is_action_just_pressed("attack"):
 				return State.ATTACK_1
 
-			if not is_on_floor():
-				return State.FALL
+			if should_slide():
+				return State.SLIDING_START
+
+			if is_still:
+				return State.IDLE
 
 		State.JUMP:
 			if velocity.y >= 0:
@@ -165,7 +202,7 @@ func get_next_state(state: State) -> int:
 			if is_on_floor():
 				return State.LANDING if is_still else State.RUNNING
 
-			if is_on_wall() and hand_checker.is_colliding() and foot_checker.is_colliding():
+			if can_wall_slide():
 				return State.WALL_SLIDING
 
 		State.LANDING:
@@ -186,7 +223,7 @@ func get_next_state(state: State) -> int:
 				return State.FALL
 
 		State.WALL_JUMP:
-			if is_on_wall() and hand_checker.is_colliding() and foot_checker.is_colliding():
+			if can_wall_slide():
 				return State.WALL_SLIDING
 
 			if velocity.y >= 0:
@@ -205,6 +242,18 @@ func get_next_state(state: State) -> int:
 				return State.IDLE
 
 		State.HURT:
+			if not animation_player.is_playing():
+				return State.IDLE
+
+		State.SLIDING_START:
+			if not animation_player.is_playing():
+				return State.SLIDING_LOOP
+
+		State.SLIDING_LOOP:
+			if state_machine.state_time > SLIDING_DURATION or is_on_wall():
+				return State.SLIDING_END
+
+		State.SLIDING_END:
 			if not animation_player.is_playing():
 				return State.IDLE
 
@@ -270,6 +319,16 @@ func transition_state(from: State, to: State) -> void:
 		State.DYING:
 			animation_player.play("die")
 			invincible_timer.stop()
+
+		State.SLIDING_START:
+			animation_player.play("sliding_start")
+			slide_request_timer.stop()
+
+		State.SLIDING_LOOP:
+			animation_player.play("sliding_loop")
+
+		State.SLIDING_END:
+			animation_player.play("sliding_end")
 
 	is_first_tick = true
 
