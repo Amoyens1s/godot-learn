@@ -1,6 +1,8 @@
 extends Node2D
 class_name World
 
+@export var bgm: AudioStream
+
 @onready var camera_2d: Camera2D = $Player/Camera2D
 @onready var tile_map: TileMap = $TileMap
 @onready var player: Player = $Player
@@ -15,6 +17,9 @@ func _ready() -> void:
 	camera_2d.limit_bottom = used.end.y * tile_size.y
 	camera_2d.limit_left = used.position.x * tile_size.x
 	camera_2d.reset_smoothing()
+
+	if bgm:
+		SoundManager.play_bgm(bgm)
 
 
 func update_player(pos: Vector2, direction: Player.Direction) -> void:

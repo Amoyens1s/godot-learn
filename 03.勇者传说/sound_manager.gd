@@ -1,6 +1,7 @@
 extends Node
 
 @onready var sfx: Node = $SFX
+@onready var bgm_player: AudioStreamPlayer = $BGMPlayer
 
 
 func play_sfx(name: String) -> void:
@@ -21,3 +22,11 @@ func setup_ui_sounds(node: Node) -> void:
 
 	for child in node.get_children():
 		setup_ui_sounds(child)
+
+
+func play_bgm(stream: AudioStream) -> void:
+	if bgm_player.stream == stream and bgm_player.playing:
+		return
+
+	bgm_player.stream = stream
+	bgm_player.play()

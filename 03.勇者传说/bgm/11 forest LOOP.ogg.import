@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cup4hwribtqbf"
+path="res://.godot/imported/11 forest LOOP.ogg-561a87aaa9ec37c8ccfa3d3775e829ae.oggvorbisstr"
+
+[deps]
+
+source_file="res://bgm/11 forest LOOP.ogg"
+dest_files=["res://.godot/imported/11 forest LOOP.ogg-561a87aaa9ec37c8ccfa3d3775e829ae.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

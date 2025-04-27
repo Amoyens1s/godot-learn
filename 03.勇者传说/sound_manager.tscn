@@ -22,3 +22,5 @@ stream = ExtResource("4_h8btt")
 
 [node name="UIFocus" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("5_7jwsb")
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
