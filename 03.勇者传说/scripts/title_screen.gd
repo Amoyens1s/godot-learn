@@ -13,6 +13,8 @@ func _ready() -> void:
 	for button: Button in v.get_children():
 		button.mouse_entered.connect(button.grab_focus)
 
+	SoundManager.setup_ui_sounds(self)
+
 
 func _on_new_game_pressed() -> void:
 	Game.new_game()
