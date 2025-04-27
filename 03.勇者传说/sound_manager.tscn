@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dku6rwqf2fx13"]
+[gd_scene load_steps=15 format=3 uid="uid://dku6rwqf2fx13"]
 
 [ext_resource type="Script" uid="uid://cc70qlsq0ma0m" path="res://sound_manager.gd" id="1_22ksp"]
 [ext_resource type="AudioStream" uid="uid://dtasgfqm7l7a8" path="res://sfx/07_human_atk_sword_1.wav" id="1_mdjn0"]
 [ext_resource type="AudioStream" uid="uid://c1rqxjcpwbx6v" path="res://sfx/12_human_jump_1.wav" id="2_22ksp"]
+[ext_resource type="AudioStream" uid="uid://cjhhn8jswaxf2" path="res://sfx/07_human_atk_sword_2.wav" id="3_rt03n"]
 [ext_resource type="AudioStream" uid="uid://j8l3fw00fa5m" path="res://sfx/impactGlass_heavy_000.ogg" id="4_h8btt"]
+[ext_resource type="AudioStream" uid="uid://dx2qysc33uo1n" path="res://sfx/07_human_atk_sword_3.wav" id="4_vgaxf"]
 [ext_resource type="AudioStream" uid="uid://c7a4u6kfw38d8" path="res://sfx/impactTin_medium_000.ogg" id="5_7jwsb"]
+[ext_resource type="AudioStream" uid="uid://bhtmf16r2qmah" path="res://sfx/13_human_jump_land_2.wav" id="6_xrcvc"]
+[ext_resource type="AudioStream" uid="uid://nwr1d8xksj35" path="res://sfx/11_human_damage_3.wav" id="7_70tky"]
+[ext_resource type="AudioStream" uid="uid://bvh6fsedpknt3" path="res://sfx/14_human_death_spin.wav" id="8_np486"]
+[ext_resource type="AudioStream" uid="uid://c7ygvf0bc7vw1" path="res://sfx/15_human_dash_1.wav" id="9_vgaxf"]
+[ext_resource type="AudioStream" uid="uid://coup6s5wwqnsk" path="res://sfx/Running.mp3" id="10_xrcvc"]
+[ext_resource type="AudioStream" uid="uid://0n2x11ldceps" path="res://sfx/24_orc_death_spin.wav" id="11_np486"]
+[ext_resource type="AudioStream" uid="uid://bx8nbgrfb365y" path="res://sfx/21_orc_damage_1.wav" id="12_j1tqm"]
 
 [node name="SoundManager" type="Node"]
 process_mode = 3
@@ -16,8 +25,54 @@ script = ExtResource("1_22ksp")
 stream = ExtResource("1_mdjn0")
 bus = &"SFX"
 
+[node name="Attack2" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_rt03n")
+bus = &"SFX"
+
+[node name="Attack3" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_vgaxf")
+bus = &"SFX"
+
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("2_22ksp")
+bus = &"SFX"
+
+[node name="Landing" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_xrcvc")
+bus = &"SFX"
+
+[node name="Hurt" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_70tky")
+bus = &"SFX"
+
+[node name="Die" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_np486")
+bus = &"SFX"
+
+[node name="WallSlide" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_vgaxf")
+bus = &"SFX"
+
+[node name="Run" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("10_xrcvc")
+pitch_scale = 0.7
+bus = &"SFX"
+
+[node name="EnemyDie" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_np486")
+bus = &"SFX"
+
+[node name="EnemyHurt" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("12_j1tqm")
+bus = &"SFX"
+
+[node name="EnemyRun" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("10_xrcvc")
+pitch_scale = 1.23
+bus = &"SFX"
+
+[node name="EnemyHit" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("12_j1tqm")
 bus = &"SFX"
 
 [node name="UIPress" type="AudioStreamPlayer" parent="SFX"]

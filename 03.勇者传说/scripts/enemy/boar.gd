@@ -75,6 +75,9 @@ func get_next_state(state: State) -> int:
 
 
 func transition_state(from: State, to: State) -> void:
+	if to != State.RUN:
+		SoundManager.stop_sfx("EnemyRun")
+
 	match to:
 		State.IDLE:
 			animation_player.play("idle")
@@ -90,6 +93,7 @@ func transition_state(from: State, to: State) -> void:
 
 		State.RUN:
 			animation_player.play("run")
+			SoundManager.play_sfx("EnemyRun")
 
 		State.HURT:
 			animation_player.play("hit")
@@ -105,8 +109,12 @@ func transition_state(from: State, to: State) -> void:
 
 			pending_damage = null
 
+			SoundManager.play_sfx("EnemyHurt")
+
 		State.DYING:
 			animation_player.play("die")
+
+			SoundManager.play_sfx("EnemyDie")
 
 
 func _on_hurtbox_hurt(hitbox: Hitbox) -> void:

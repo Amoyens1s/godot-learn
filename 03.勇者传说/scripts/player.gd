@@ -308,12 +308,16 @@ func transition_state(from: State, to: State) -> void:
 	if from not in GROUND_STATE and to in GROUND_STATE:
 		coyote_timer.stop()
 
+	if to != State.RUNNING:
+		SoundManager.stop_sfx("Run")
+
 	match to:
 		State.IDLE:
 			animation_player.play("idle")
 
 		State.RUNNING:
 			animation_player.play("running")
+			SoundManager.play_sfx("Run")
 
 		State.JUMP:
 			animation_player.play("jump")
@@ -331,15 +335,18 @@ func transition_state(from: State, to: State) -> void:
 
 		State.LANDING:
 			animation_player.play("landing")
+			SoundManager.play_sfx("Landing")
 
 		State.WALL_SLIDING:
 			animation_player.play("wall_sliding")
+			SoundManager.play_sfx("WallSlide")
 
 		State.WALL_JUMP:
 			animation_player.play("jump")
 			velocity = WALL_JUMP_VELOCITY
 			velocity.x *= get_wall_normal().x
 			jump_request_timer.stop()
+			SoundManager.play_sfx("Jump")
 
 		State.ATTACK_1:
 			animation_player.play("attack_1")
@@ -349,10 +356,12 @@ func transition_state(from: State, to: State) -> void:
 		State.ATTACK_2:
 			animation_player.play("attack_2")
 			is_combo_requested = false
+			SoundManager.play_sfx("Attack2")
 
 		State.ATTACK_3:
 			animation_player.play("attack_3")
 			is_combo_requested = false
+			SoundManager.play_sfx("Attack3")
 
 		State.HURT:
 			animation_player.play("hurt")
@@ -363,11 +372,13 @@ func transition_state(from: State, to: State) -> void:
 
 			pending_damage = null
 			invincible_timer.start()
+			SoundManager.play_sfx("Hurt")
 
 		State.DYING:
 			animation_player.play("die")
 			invincible_timer.stop()
 			interacting_with.clear()
+			SoundManager.play_sfx("Die")
 
 		State.SLIDING_START:
 			animation_player.play("sliding_start")
