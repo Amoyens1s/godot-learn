@@ -410,3 +410,9 @@ func die() -> void:
 
 func _on_hitbox_hit(Hurtbox: Variant) -> void:
 	Game.shake_camera(2)
+
+	# 顿屏提高打击感
+	Engine.time_scale = 0.1
+	# 最后一个true控制第一个0.5是现实世界时间还是受 Engine.time_scale 影响的时间
+	await get_tree().create_timer(0.05, true, false, true).timeout
+	Engine.time_scale = 1

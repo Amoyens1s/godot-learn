@@ -12,7 +12,7 @@ func _ready() -> void:
 	)
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	offset = Vector2(
 		randf_range(-strength, +strength),
 		randf_range(-strength, +strength)

@@ -40,6 +40,7 @@ position = Vector2(104, 296)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -16)
+process_callback = 0
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
