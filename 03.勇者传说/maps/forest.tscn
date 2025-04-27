@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://mudfkkxh6kg3"]
+[gd_scene load_steps=11 format=3 uid="uid://mudfkkxh6kg3"]
 
 [ext_resource type="Script" uid="uid://ca74sk7n1srmm" path="res://maps/world.gd" id="1_b5t37"]
 [ext_resource type="TileSet" uid="uid://c38h67ltw2rv7" path="res://tiles/tile.tres" id="2_3utv1"]
 [ext_resource type="Texture2D" uid="uid://dvr5301j26b5j" path="res://assets/Tree-Assets.png" id="2_7akmr"]
+[ext_resource type="AudioStream" uid="uid://cup4hwribtqbf" path="res://bgm/11 forest LOOP.ogg" id="2_l7n68"]
 [ext_resource type="PackedScene" uid="uid://dwgw8lt6kuhrq" path="res://scenes/mine_gate.tscn" id="3_3utv1"]
 [ext_resource type="Script" uid="uid://bandm5wlvj3y6" path="res://scripts/classes/EntryPoint.gd" id="4_l7n68"]
 [ext_resource type="PackedScene" uid="uid://biodm7i0lwapv" path="res://scenes/player.tscn" id="5_27rp4"]
@@ -12,6 +13,7 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_b5t37")
+bgm = ExtResource("2_l7n68")
 metadata/_edit_horizontal_guides_ = [192.0]
 
 [node name="TileMap" type="TileMap" parent="."]
