@@ -17,6 +17,8 @@ var tween: Tween
 func _ready() -> void:
 	show_line(0)
 	SoundManager.play_bgm(preload("res://bgm/15 game over LOOP.ogg"))
+	SoundManager.stop_sfx("Run")
+	SoundManager.stop_sfx("EnemyRun")
 
 
 func _input(event: InputEvent) -> void:

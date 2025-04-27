@@ -84,12 +84,16 @@ func transition_state(from: State, to: State) -> void:
 			if wall_checker.is_colliding():
 				direction *= -1
 
+			SoundManager.stop_sfx("EnemyRun")
+
 		State.WALK:
 			animation_player.play("walk")
 			if not floor_checker.is_colliding():
 				direction *= -1
 				# 野猪翻转后还以为面前是墙所以不移动，强制更新检测即可修复
 				floor_checker.force_raycast_update()
+
+			SoundManager.stop_sfx("EnemyRun")
 
 		State.RUN:
 			animation_player.play("run")
@@ -109,11 +113,12 @@ func transition_state(from: State, to: State) -> void:
 
 			pending_damage = null
 
+			SoundManager.stop_sfx("EnemyRun")
 			SoundManager.play_sfx("EnemyHurt")
 
 		State.DYING:
 			animation_player.play("die")
-
+			SoundManager.stop_sfx("EnemyRun")
 			SoundManager.play_sfx("EnemyDie")
 
 

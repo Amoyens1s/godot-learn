@@ -12,6 +12,8 @@ func _ready() -> void:
 
 	SoundManager.setup_ui_sounds(self)
 	SoundManager.play_bgm(preload("res://bgm/1 titles LOOP.ogg"))
+	SoundManager.stop_sfx("Run")
+	SoundManager.stop_sfx("EnemyRun")
 
 
 func _on_new_game_pressed() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://mudfkkxh6kg3"]
+[gd_scene load_steps=13 format=3 uid="uid://mudfkkxh6kg3"]
 
 [ext_resource type="Script" uid="uid://ca74sk7n1srmm" path="res://maps/world.gd" id="1_b5t37"]
 [ext_resource type="TileSet" uid="uid://c38h67ltw2rv7" path="res://tiles/tile.tres" id="2_3utv1"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dpe6dsov44u5o" path="res://assets/Background-trees.png" id="7_0ufo8"]
 [ext_resource type="Script" uid="uid://dusxx6v60rwfo" path="res://scripts/classes/ShakyCamera.gd" id="7_l7n68"]
 [ext_resource type="PackedScene" uid="uid://cqkogf1dsbik1" path="res://scenes/enemies/boar.tscn" id="8_xrs67"]
+[ext_resource type="Theme" uid="uid://cgm3ykdiefdqj" path="res://MainTheme.tres" id="12_27rp4"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_b5t37")
@@ -252,3 +253,41 @@ region_rect = Rect2(210, 5, 124, 86)
 
 [node name="Boar" parent="." instance=ExtResource("8_xrs67")]
 position = Vector2(368, 144)
+
+[node name="Tips" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="Tips"]
+offset_left = -8.0
+offset_top = 80.0
+offset_right = 184.0
+offset_bottom = 103.0
+theme = ExtResource("12_27rp4")
+theme_override_font_sizes/font_size = 12
+text = "按A向左，D向右，空格跳跃"
+
+[node name="Label2" type="Label" parent="Tips"]
+offset_left = 240.0
+offset_top = 104.0
+offset_right = 432.0
+offset_bottom = 127.0
+theme = ExtResource("12_27rp4")
+theme_override_font_sizes/font_size = 12
+text = "J攻击，K滑铲"
+
+[node name="Label3" type="Label" parent="Tips"]
+offset_left = 440.0
+offset_top = 64.0
+offset_right = 632.0
+offset_bottom = 87.0
+theme = ExtResource("12_27rp4")
+theme_override_font_sizes/font_size = 12
+text = "长按空格跳上更高的平台"
+
+[node name="Label4" type="Label" parent="Tips"]
+offset_left = 704.0
+offset_top = 104.0
+offset_right = 896.0
+offset_bottom = 127.0
+theme = ExtResource("12_27rp4")
+theme_override_font_sizes/font_size = 12
+text = "蹬墙跳"

@@ -314,6 +314,7 @@ func transition_state(from: State, to: State) -> void:
 	match to:
 		State.IDLE:
 			animation_player.play("idle")
+			SoundManager.stop_sfx("Run")
 
 		State.RUNNING:
 			animation_player.play("running")
@@ -325,6 +326,7 @@ func transition_state(from: State, to: State) -> void:
 			coyote_timer.stop()
 			jump_request_timer.stop()
 			SoundManager.play_sfx("Jump")
+			SoundManager.stop_sfx("Run")
 
 		State.FALL:
 			animation_player.play("fall")
@@ -332,14 +334,17 @@ func transition_state(from: State, to: State) -> void:
 				coyote_timer.start()
 
 			fall_from_y = global_position.y
+			SoundManager.stop_sfx("Run")
 
 		State.LANDING:
 			animation_player.play("landing")
 			SoundManager.play_sfx("Landing")
+			SoundManager.stop_sfx("Run")
 
 		State.WALL_SLIDING:
 			animation_player.play("wall_sliding")
 			SoundManager.play_sfx("WallSlide")
+			SoundManager.stop_sfx("Run")
 
 		State.WALL_JUMP:
 			animation_player.play("jump")
@@ -347,21 +352,25 @@ func transition_state(from: State, to: State) -> void:
 			velocity.x *= get_wall_normal().x
 			jump_request_timer.stop()
 			SoundManager.play_sfx("Jump")
+			SoundManager.stop_sfx("Run")
 
 		State.ATTACK_1:
 			animation_player.play("attack_1")
 			is_combo_requested = false
 			SoundManager.play_sfx("Attack")
+			SoundManager.stop_sfx("Run")
 
 		State.ATTACK_2:
 			animation_player.play("attack_2")
 			is_combo_requested = false
 			SoundManager.play_sfx("Attack2")
+			SoundManager.stop_sfx("Run")
 
 		State.ATTACK_3:
 			animation_player.play("attack_3")
 			is_combo_requested = false
 			SoundManager.play_sfx("Attack3")
+			SoundManager.stop_sfx("Run")
 
 		State.HURT:
 			animation_player.play("hurt")
@@ -374,23 +383,29 @@ func transition_state(from: State, to: State) -> void:
 			pending_damage = null
 			invincible_timer.start()
 			SoundManager.play_sfx("Hurt")
+			SoundManager.stop_sfx("Run")
 
 		State.DYING:
 			animation_player.play("die")
 			invincible_timer.stop()
 			interacting_with.clear()
 			SoundManager.play_sfx("Die")
+			SoundManager.stop_sfx("Run")
 
 		State.SLIDING_START:
 			animation_player.play("sliding_start")
 			slide_request_timer.stop()
 			stats.energy -= SLIDING_ENERGY
+			SoundManager.stop_sfx("Run")
+			SoundManager.play_sfx("WallSlide")
 
 		State.SLIDING_LOOP:
 			animation_player.play("sliding_loop")
+			SoundManager.stop_sfx("Run")
 
 		State.SLIDING_END:
 			animation_player.play("sliding_end")
+			SoundManager.stop_sfx("Run")
 
 	is_first_tick = true
 

@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="03.勇者传说"
+config/name="勇者传说之野猪才是传说"
+config/version="1.0.0"
 run/main_scene="uid://crjmdjrejpbtp"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(1, 1, 1, 0)
+boot_splash/image="uid://bkfv0t7h4gqen"
+config/icon="uid://cbi4m63v3m0au"
+boot_splash/minimum_display_time=2000
 
 [autoload]
 

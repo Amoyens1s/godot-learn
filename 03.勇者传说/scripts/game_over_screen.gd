@@ -6,6 +6,8 @@ extends Control
 func _ready() -> void:
 	hide()
 	set_process_input(false)
+	SoundManager.stop_sfx("Run")
+	SoundManager.stop_sfx("EnemyRun")
 
 
 func _input(event: InputEvent) -> void:
