@@ -366,6 +366,7 @@ func transition_state(from: State, to: State) -> void:
 		State.HURT:
 			animation_player.play("hurt")
 			stats.health -= pending_damage.amount
+			Game.shake_camera(4)
 
 			var dir := pending_damage.source.global_position.direction_to(global_position)
 			velocity.x = dir.x * KNOCKBACK_AMOUNT
@@ -405,3 +406,7 @@ func _on_hurtbox_hurt(hitbox: Hitbox) -> void:
 
 func die() -> void:
 	game_over_screen.show_game_over()
+
+
+func _on_hitbox_hit(Hurtbox: Variant) -> void:
+	Game.shake_camera(2)

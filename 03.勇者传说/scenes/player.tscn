@@ -2433,3 +2433,4 @@ frame = 3
 frame_progress = 1.0
 
 [connection signal="hurt" from="Graphics/Hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="hit" from="Graphics/Hitbox" to="." method="_on_hitbox_hit"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://mudfkkxh6kg3"]
+[gd_scene load_steps=12 format=3 uid="uid://mudfkkxh6kg3"]
 
 [ext_resource type="Script" uid="uid://ca74sk7n1srmm" path="res://maps/world.gd" id="1_b5t37"]
 [ext_resource type="TileSet" uid="uid://c38h67ltw2rv7" path="res://tiles/tile.tres" id="2_3utv1"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://biodm7i0lwapv" path="res://scenes/player.tscn" id="5_27rp4"]
 [ext_resource type="Texture2D" uid="uid://ukjcafdfvlxj" path="res://assets/Background.png" id="6_v601k"]
 [ext_resource type="Texture2D" uid="uid://dpe6dsov44u5o" path="res://assets/Background-trees.png" id="7_0ufo8"]
+[ext_resource type="Script" uid="uid://dusxx6v60rwfo" path="res://scripts/classes/ShakyCamera.gd" id="7_l7n68"]
 [ext_resource type="PackedScene" uid="uid://cqkogf1dsbik1" path="res://scenes/enemies/boar.tscn" id="8_xrs67"]
 
 [node name="World" type="Node2D"]
@@ -48,6 +49,7 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
+script = ExtResource("7_l7n68")
 
 [node name="Decorations" type="Node2D" parent="."]
 

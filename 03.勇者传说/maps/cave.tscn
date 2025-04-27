@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://brmw3mq52v2gf"]
+[gd_scene load_steps=10 format=3 uid="uid://brmw3mq52v2gf"]
 
 [ext_resource type="Script" uid="uid://cd658d0ycpbsg" path="res://scripts/cave.gd" id="1_0qq4n"]
 [ext_resource type="AudioStream" uid="uid://btiyfv3g7xryx" path="res://bgm/14 BOSS y LOOP.ogg" id="2_l78uw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://pmxsg0wv2b7r" path="res://scenes/save_stone.tscn" id="5_0qq4n"]
 [ext_resource type="PackedScene" uid="uid://biodm7i0lwapv" path="res://scenes/player.tscn" id="5_fpr8h"]
 [ext_resource type="PackedScene" uid="uid://cqkogf1dsbik1" path="res://scenes/enemies/boar.tscn" id="8_owvnq"]
+[ext_resource type="Script" uid="uid://dusxx6v60rwfo" path="res://scripts/classes/ShakyCamera.gd" id="8_ydj6p"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_0qq4n")
@@ -44,6 +45,7 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
+script = ExtResource("8_ydj6p")
 
 [node name="Decorations" type="Node2D" parent="."]
 
