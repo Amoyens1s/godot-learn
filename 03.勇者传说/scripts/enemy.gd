@@ -9,6 +9,7 @@ enum Direction {
 @onready var graphics: Node2D = $Graphics
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: StateMachine = $StateMachine
+@onready var stats: Stats = $Stats
 
 @export var direction := Direction.LEFT:
 	set(v):
@@ -30,3 +31,7 @@ func move(speed: float, delta: float) -> void:
 	velocity.y += default_gravity * delta
 
 	move_and_slide()
+
+
+func die() -> void:
+	queue_free()

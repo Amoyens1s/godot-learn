@@ -106,7 +106,7 @@ func stand(gravity: float, delta: float) -> void:
 	move_and_slide()
 
 
-func get_next_state(state: State) -> State:
+func get_next_state(state: State) -> int:
 	var can_jump := is_on_floor() or coyote_timer.time_left > 0
 	var shoud_jump := can_jump and jump_request_timer.time_left > 0
 
@@ -184,7 +184,7 @@ func get_next_state(state: State) -> State:
 			if not animation_player.is_playing():
 				return State.IDLE
 
-	return state
+	return StateMachine.KEEP_CURRENT
 
 
 func transition_state(from: State, to: State) -> void:
