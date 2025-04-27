@@ -1,5 +1,7 @@
 extends Control
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 
 func _ready() -> void:
 	hide()
@@ -8,6 +10,9 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	get_window().set_input_as_handled()
+
+	if animation_player.is_playing():
+		return
 
 	if (
 		event is InputEvent or
@@ -26,3 +31,4 @@ func _input(event: InputEvent) -> void:
 func show_game_over() -> void:
 	show()
 	set_process_input(true)
+	animation_player.play("enter")
