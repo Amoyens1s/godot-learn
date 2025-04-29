@@ -1,0 +1,6 @@
+res://game.tscn
+res://BlockData.gd
+res://CropData.gd
+res://Potato.tres
+res://game.gd
+res://Soil.tres
