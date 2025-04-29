@@ -1,0 +1,11 @@
+res://readme.md
+res://scenes/bg.tscn
+res://scenes/dino.tscn
+res://scenes/ground.tscn
+res://scenes/main.tscn
+res://scenes/dino.gd
+res://scenes/stump.tscn
+res://scenes/barrel.tscn
+res://scenes/rock.tscn
+res://scenes/bird.tscn
+res://scenes/main.gd
