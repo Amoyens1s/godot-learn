@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d158tqo1onooe"]
+[gd_scene load_steps=6 format=3 uid="uid://d158tqo1onooe"]
 
 [ext_resource type="Script" uid="uid://jxn5smy7txsj" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cgdpl3lgtxq4l" path="res://scenes/bg.tscn" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bq0fddhyfao3v" path="res://scenes/ground.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cb2crubm5xxrx" path="res://scenes/dino.tscn" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dybm2rv7fvncd" path="res://scenes/hud.tscn" id="5_tbgi4"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jyhfs")
@@ -17,3 +18,5 @@ position = Vector2(152, 496)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+
+[node name="HUD" parent="." instance=ExtResource("5_tbgi4")]
