@@ -1,5 +1,7 @@
-Label
+Button
 CanvasLayer
+CanvasGroup
+Label
 CollisionShape2D
 AnimatedSprite2D
 Area2D
@@ -10,4 +12,3 @@ StaticBody2D
 AudioStreamPlayer
 CharacterBody2D
 ParallaxLayer
-ParallaxBackground

@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2rqjm2olcln4"]
+[gd_scene load_steps=10 format=3 uid="uid://b2rqjm2olcln4"]
 
+[ext_resource type="Script" uid="uid://d1e5bbhcpgg5h" path="res://scenes/bird.gd" id="1_3po83"]
 [ext_resource type="Texture2D" uid="uid://fjuyh3gulxww" path="res://assets/img/obstacles/Bird.png" id="1_kqhkv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3po83"]
@@ -45,12 +46,13 @@ size = Vector2(12, 13)
 
 [node name="Bird" type="Area2D"]
 scale = Vector2(4, 4)
+script = ExtResource("1_3po83")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ifiym")
 animation = &"flying"
 autoplay = "flying"
-frame_progress = 0.562865
+frame_progress = 0.15647
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 0.5)

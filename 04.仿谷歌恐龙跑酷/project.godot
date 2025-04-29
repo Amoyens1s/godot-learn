@@ -13,7 +13,9 @@ config_version=5
 config/name="04.仿谷歌恐龙跑酷"
 run/main_scene="uid://d158tqo1onooe"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/image="uid://6yg3xqeslmj4"
+config/icon="uid://bbucqmiqe68lb"
+boot_splash/minimum_display_time=2000
 
 [rendering]
 

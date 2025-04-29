@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dwqn6xpsnxkpc" path="res://assets/img/obstacles/barrel.png" id="1_q36op"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptqd7"]
-size = Vector2(108, 104)
+size = Vector2(96, 96)
 
 [node name="Barrel" type="Area2D"]
 
@@ -12,4 +12,5 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_q36op")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_ptqd7")

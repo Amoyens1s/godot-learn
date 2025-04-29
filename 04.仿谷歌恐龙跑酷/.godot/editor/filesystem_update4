@@ -10,3 +10,5 @@ res://scenes/rock.tscn
 res://scenes/bird.tscn
 res://scenes/main.gd
 res://scenes/hud.tscn
+res://scenes/bird.gd
+res://scenes/game_over.tscn
