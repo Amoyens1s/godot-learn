@@ -17,6 +17,7 @@ func _ready() -> void:
 
 func new_game():
 	score = 0
+	show_score()
 	game_running = false
 
 	$Dino.position = DINO_START_POS
